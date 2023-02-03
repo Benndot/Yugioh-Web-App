@@ -1,9 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
 
-let reducerStyle = {
-    backgroundColor: "yellow"
-}
-
 function DuelistReducer(props) {
 
     const [lifepointCost, setLifepointCost] = useState(0)
@@ -77,9 +73,23 @@ function DuelistReducer(props) {
     }, [props.duelistName])
 
     return (
-        <div style={reducerStyle}>
-            <h4>Current Duelist: {duelist.name.first + " " + duelist.name.last}</h4>
-            <h2>Remaining Life Points: {duelist.lifePoints}</h2>
+        <div className="reducer">
+            
+            <div className="portrait-grid">
+                <div className="portrait-box">
+                    <img className="portrait-image" src={require("../images/Yugi_muto.png")} alt="A face-closeup of Yugi Moto from the Yugioh anime series" />
+                    <h2 className="portrait-text">Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
+                    <h2 className="portrait-text">Remaining Life Points: {duelist.lifePoints}</h2>
+                </div>
+                
+                <div className="portrait-box">
+                    <img className="portrait-image" src={require("../images/alexis-rhodes.jpg")} alt="A face-closeup of Alexis Rhodes from the Yugioh anime series" />
+                    <h2>Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
+                    <h2>Remaining Life Points: {duelist.lifePoints}</h2>
+                </div>
+            </div>
+            
+            
             {duelist.lifePoints <= 0 ? <p style={{color: "red", marginTop: "0vw"}}>life points have fallen below 0!</p> : <p></p>}
             <h3>Lifepoints to sacrifice: {lifepointCost}</h3>
             <button onClick={() => dispatch({type: "pay_lifepoints"})}>Confirm Lifepoint Cost</button>

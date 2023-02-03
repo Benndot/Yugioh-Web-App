@@ -10,8 +10,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>This is my dedicated Yugioh Reducer App!</h1>
-      <DuelistReducer duelistName={duelistName} />
+      <header>
+        <h1>Yugioh State and Reducer App!</h1>
+      </header>
+
+      <DuelistReducer className="reducer" duelistName={duelistName} />
       <DuelistRadioSelection selected={duelistName} setSelected={setduelistName} />
     </div>
   );

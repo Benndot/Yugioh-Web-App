@@ -1,5 +1,7 @@
 body {
+  color: white;
   background-color: aquamarine;
+  background-image: url("images/background1.png");
   text-align: center;
 }
 
@@ -13,3 +15,24 @@ SectionWrapper {
   margin-left: 100px;
 }
 
+.portrait-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.portrait-box {
+  color: white;
+  background-color: black;
+  height: 25vw;
+  width: 20vw;
+  border: 0.2vw solid white;
+}
+
+.portrait-image {
+  height: 20vw;
+  width: 20vw;
+}
+
+/* .reducer {
+  background-image: url("images/duel-mat3.jpg");
+} */
