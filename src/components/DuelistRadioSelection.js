@@ -33,8 +33,9 @@ function DuelistRadioSelection(props) {
 
     return (
       <RadioGroup onChange={props.setSelected} selected={props.selected}>
+        <h1>Choose The Active Duelist:</h1>
         {/* Make the sequence of RadioOptions rendered more efficient by mapping/ rendering them automatically based on the DuelistNames list rather than altogether like this */}
-        <RadioOption value={JSON.stringify(duelistNames[0])}>{`${duelistNames[0].firstName} ${duelistNames[0].lastName}`}</RadioOption>
+        <RadioOption className="radio-option" value={JSON.stringify(duelistNames[0])}>{`${duelistNames[0].firstName} ${duelistNames[0].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[1])}>{`${duelistNames[1].firstName} ${duelistNames[1].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[2])}>{`${duelistNames[2].firstName} ${duelistNames[2].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[3])}>{`${duelistNames[3].firstName} ${duelistNames[3].lastName}`}</RadioOption>

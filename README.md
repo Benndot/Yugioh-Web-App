@@ -16,7 +16,6 @@ This is an app that attempts to make a fun little Yugioh-themed interface that w
 
 - Create a second duelist reducer state to track two "players" with independent/separate attributes
 - Create a switch on the radio options (and perhaps other things) that lets you choose which duelist to targets
-- Reset button for lifepoints
 - Better page styling, especially for the buttons
 
 ## Available Scripts

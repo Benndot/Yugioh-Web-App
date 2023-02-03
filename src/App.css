@@ -5,6 +5,12 @@ body {
   text-align: center;
 }
 
+button {
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
 #box-one {
   background-color: pink;
   outline: 4px solid yellow;
@@ -26,4 +32,10 @@ body {
 .portrait-image {
   height: 20vw;
   width: 20vw;
+}
+
+.RadioOption {
+  font-size: 2rem;
+  margin-right: 1rem;
+  display: inline-block;
 }

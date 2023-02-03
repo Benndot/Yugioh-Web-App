@@ -26,6 +26,12 @@ function DuelistReducer(props) {
             ...duelist,
             lifePoints: duelist.lifePoints - lifepointCost
         }
+
+        if (action.type === "reset_lifepoints" && duelist.lifePoints !== 4000) return {
+            ...duelist,
+            lifePoints: 4000,
+            defeated: false
+        }
         
         if (action.type === "draw_card") return {
             ...duelist, 
@@ -96,9 +102,10 @@ function DuelistReducer(props) {
             <h3>Lifepoints to sacrifice: {lifepointCost}</h3>
             <button onClick={() => dispatch({type: "pay_lifepoints"})}>Confirm Lifepoint Cost</button>
             <input type="range" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
+            <button onClick={() => dispatch({type: "reset_lifepoints"})}>Reset Lifepoints</button>
             <h5>
                 Cards in deck: {duelist.deck.size}, Cards in hand: {duelist.gameState.handSize}, Cards in grave: {duelist.gameState.graveSize}
-                </h5>
+            </h5>
             <button onClick={() => dispatch({type: "draw_card"})}>Click me to draw a card!</button>
             <button onClick={() => dispatch({type: "discard_card"})}>Discard a card</button>
             <button onClick={() => dispatch({type: "defeat_check"})}>How is the duelist doing?</button>
