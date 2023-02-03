@@ -13,6 +13,7 @@ function DuelistReducer(props) {
         name: {
             first: "Seto", 
             last: "Kaiba"},
+        pictureName: "seto-kaiba.jpg",
         lifePoints: 4000, 
         deck: {name: "Dark Magician", size: 43, cardsRemaining: 38},
         gameState: {handSize: 3, graveSize: 1, cardsOnField: 1},
@@ -58,7 +59,8 @@ function DuelistReducer(props) {
                 console.log(duelistNameObject)
                 return {
                 ...duelist,
-                name: {first: duelistNameObject.firstName, last: duelistNameObject.lastName}
+                name: {first: duelistNameObject.firstName, last: duelistNameObject.lastName},
+                pictureName: duelistNameObject.picture
             }
             
         }}
@@ -77,13 +79,13 @@ function DuelistReducer(props) {
             
             <div className="portrait-grid">
                 <div className="portrait-box">
-                    <img className="portrait-image" src={require("../images/Yugi_muto.png")} alt="A face-closeup of Yugi Moto from the Yugioh anime series" />
+                    <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt="A face-closeup of Yugi Moto from the Yugioh anime series" />
                     <h2 className="portrait-text">Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
                     <h2 className="portrait-text">Remaining Life Points: {duelist.lifePoints}</h2>
                 </div>
                 
                 <div className="portrait-box">
-                    <img className="portrait-image" src={require("../images/alexis-rhodes.jpg")} alt="A face-closeup of Alexis Rhodes from the Yugioh anime series" />
+                    <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt="A face-closeup of Alexis Rhodes from the Yugioh anime series" />
                     <h2>Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
                     <h2>Remaining Life Points: {duelist.lifePoints}</h2>
                 </div>

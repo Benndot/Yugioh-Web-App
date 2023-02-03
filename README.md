@@ -4,9 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is an app that attempts to make a fun little Yugioh-themed interface that will hopefully simulate some of the game's mechanics. 
 
+## Features
+
+- Features isolated to intercommunicating components using props, reducers, and states.
+- Dynamically changing nametext and portraits for duelists based on radio button selection
+- Manually adjustable lifepoint monitor with warning text and stoppage when lifepoints fall to 0 or lower
+- Ability to draw and discard from a deck, with tracked integers representing the sizes of the deck, hand and graveyard
+- Defeat checks based on lifepoint value and deck-out loss scenarios with a text indicator if the "player" has lost
+
 ## Todo
 
-- Add images to the radio options' values so that we can have dynamically changing duelist portraits
 - Create a second duelist reducer state to track two "players" with independent/separate attributes
 - Create a switch on the radio options (and perhaps other things) that lets you choose which duelist to targets
 - Reset button for lifepoints

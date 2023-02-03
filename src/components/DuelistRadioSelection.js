@@ -1,10 +1,12 @@
 import { RadioGroup, RadioOption } from "./RadioOptions";
 
 const duelistNames = [
-    {firstName: "Yugi", lastName: "Moto"}, 
-    {firstName: "Mokuba", lastName: "Kaiba"}, 
-    {firstName: "Marik", lastName: "Ishtar"},
-    {firstName: "Alexis", lastName: "Rhodes"}
+    {firstName: "Yugi", lastName: "Moto", picture: "Yugi_muto.png"}, 
+    {firstName: "Tea", lastName: "Gardner", picture: "tea-gardner.png"},
+    {firstName: "Mokuba", lastName: "Kaiba", picture: "mokuba-kaiba.png"}, 
+    {firstName: "Marik", lastName: "Ishtar", picture: "marik-ishtar.png"},
+    {firstName: "Alexis", lastName: "Rhodes", picture: "alexis-rhodes.jpg"},
+    {firstName: "Seto", lastName: "Kaiba", picture: "seto-kaiba.jpg"},
   ]
 
 function DuelistRadioSelection(props) {   
@@ -31,10 +33,13 @@ function DuelistRadioSelection(props) {
 
     return (
       <RadioGroup onChange={props.setSelected} selected={props.selected}>
+        {/* Make the sequence of RadioOptions rendered more efficient by mapping/ rendering them automatically based on the DuelistNames list rather than altogether like this */}
         <RadioOption value={JSON.stringify(duelistNames[0])}>{`${duelistNames[0].firstName} ${duelistNames[0].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[1])}>{`${duelistNames[1].firstName} ${duelistNames[1].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[2])}>{`${duelistNames[2].firstName} ${duelistNames[2].lastName}`}</RadioOption>
         <RadioOption value={JSON.stringify(duelistNames[3])}>{`${duelistNames[3].firstName} ${duelistNames[3].lastName}`}</RadioOption>
+        <RadioOption value={JSON.stringify(duelistNames[4])}>{`${duelistNames[4].firstName} ${duelistNames[4].lastName}`}</RadioOption>
+        <RadioOption value={JSON.stringify(duelistNames[5])}>{`${duelistNames[5].firstName} ${duelistNames[5].lastName}`}</RadioOption>
         <button type="submit" disabled={!props.selected} onClick={submitDuelist}>Submit Duelist Name</button>
         <button onClick={viewSelectedClick}>See value of selected</button>
       </RadioGroup>

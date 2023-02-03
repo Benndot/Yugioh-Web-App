@@ -10,11 +10,6 @@ body {
   outline: 4px solid yellow;
 }
 
-/* This doesn't work, at least I don't think it does */
-SectionWrapper {
-  margin-left: 100px;
-}
-
 .portrait-grid {
   display: flex;
   justify-content: space-around;
@@ -32,7 +27,3 @@ SectionWrapper {
   height: 20vw;
   width: 20vw;
 }
-
-/* .reducer {
-  background-image: url("images/duel-mat3.jpg");
-} */
