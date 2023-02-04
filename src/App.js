@@ -14,8 +14,10 @@ function App() {
         <h1>Yugioh State and Reducer App!</h1>
       </header>
 
-      <DuelistReducer className="reducer" duelistName={duelistName} />
-      <DuelistRadioSelection selected={duelistName} setSelected={setduelistName} />
+      <main>
+        <DuelistReducer className="reducer" duelistName={duelistName} />
+        <DuelistRadioSelection selected={duelistName} setSelected={setduelistName} />
+      </main>
     </div>
   );
 }

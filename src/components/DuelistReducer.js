@@ -15,8 +15,8 @@ function DuelistReducer(props) {
             last: "Kaiba"},
         pictureName: "seto-kaiba.jpg",
         lifePoints: 4000, 
-        deck: {name: "Dark Magician", size: 43, cardsRemaining: 38},
-        gameState: {handSize: 3, graveSize: 1, cardsOnField: 1},
+        deck: {name: "Dark Magician", currentSize: 37},
+        gameState: {handSize: 4, graveSize: 2, cardsOnField: 1},
         defeated: false
     }
 
@@ -33,19 +33,19 @@ function DuelistReducer(props) {
             defeated: false
         }
         
-        if (action.type === "draw_card") return {
+        if (action.type === "draw_card" && duelist.deck.currentSize >= 1) return {
             ...duelist, 
-            deck: {...duelist.deck, size: duelist.deck.size - 1}, 
+            deck: {...duelist.deck, currentSize: duelist.deck.currentSize - 1}, 
             gameState: {...duelist.gameState, handSize: duelist.gameState.handSize + 1}}
 
         if (action.type === "defeat_check") {
-            if (duelist.lifePoints <=0 || duelist.deck.size <= 0) return {
+            if (duelist.lifePoints <=0 || duelist.deck.currentSize <= 0) return {
                 ...duelist,
                 defeated: true
             }
         }
 
-        if (action.type === "discard_card") return {
+        if (action.type === "discard_card" && duelist.gameState.handSize >= 1) return {
             ...duelist,
             gameState: {...duelist.gameState, 
                         handSize: duelist.gameState.handSize - 1,
@@ -104,7 +104,7 @@ function DuelistReducer(props) {
             <input type="range" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
             <button onClick={() => dispatch({type: "reset_lifepoints"})}>Reset Lifepoints</button>
             <h5>
-                Cards in deck: {duelist.deck.size}, Cards in hand: {duelist.gameState.handSize}, Cards in grave: {duelist.gameState.graveSize}
+                Cards in deck: {duelist.deck.currentSize}, Cards in hand: {duelist.gameState.handSize}, Cards in grave: {duelist.gameState.graveSize}
             </h5>
             <button onClick={() => dispatch({type: "draw_card"})}>Click me to draw a card!</button>
             <button onClick={() => dispatch({type: "discard_card"})}>Discard a card</button>
