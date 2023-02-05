@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 
 function DuelistReducer(props) {
 
+    const [duelistSwitch, setDuelistSwitch] = useState(true)
     const [lifepointCost, setLifepointCost] = useState(0)
 
     const changeLifePointCost = (ele) => {
@@ -15,9 +16,22 @@ function DuelistReducer(props) {
             last: "Kaiba"},
         pictureName: "seto-kaiba.jpg",
         lifePoints: 4000, 
+        deck: {name: "Blue-Eyes White Dragon", currentSize: 34},
+        gameState: {handSize: 5, graveSize: 1, cardsOnField: 1},
+        defeated: false,
+        activeEditing: true
+    }
+
+    const defaultDuelist2 = {
+        name: {
+            first: "Yugi", 
+            last: "Moto"},
+        pictureName: "Yugi_muto.png",
+        lifePoints: 4000, 
         deck: {name: "Dark Magician", currentSize: 37},
         gameState: {handSize: 4, graveSize: 2, cardsOnField: 1},
-        defeated: false
+        defeated: false,
+        activeEditing: false
     }
 
     const reducer = (duelist, action) => {
@@ -75,9 +89,16 @@ function DuelistReducer(props) {
     }
 
     const [duelist, dispatch] = useReducer(reducer, defaultDuelist)
+    const [duelist2, dispatch2] = useReducer(reducer, defaultDuelist2)
 
     useEffect(() => {
-        dispatch({type: "swap_duelist"})
+        if (duelistSwitch === true) {
+            dispatch({type: "swap_duelist"})
+        }
+        if (duelistSwitch === false) {
+            dispatch2({type: "swap_duelist"})
+        }
+        
     }, [props.duelistName])
 
     return (
@@ -86,14 +107,14 @@ function DuelistReducer(props) {
             <div className="portrait-grid">
                 <div className="portrait-box">
                     <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt="A face-closeup of Yugi Moto from the Yugioh anime series" />
-                    <h2 className="portrait-text">Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
+                    <h2 className="portrait-text">Duelist A: {duelist.name.first + " " + duelist.name.last}</h2>
                     <h2 className="portrait-text">Remaining Life Points: {duelist.lifePoints}</h2>
                 </div>
                 
                 <div className="portrait-box">
-                    <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt="A face-closeup of Alexis Rhodes from the Yugioh anime series" />
-                    <h2>Current Duelist: {duelist.name.first + " " + duelist.name.last}</h2>
-                    <h2>Remaining Life Points: {duelist.lifePoints}</h2>
+                    <img className="portrait-image" src={require(`../images/${duelist2.pictureName}`)} alt="A face-closeup of Alexis Rhodes from the Yugioh anime series" />
+                    <h2 className="portrait-text">Duelist B: {duelist2.name.first + " " + duelist2.name.last}</h2>
+                    <h2 className="portrait-text">Remaining Life Points: {duelist2.lifePoints}</h2>
                 </div>
             </div>
             
@@ -103,15 +124,16 @@ function DuelistReducer(props) {
             <button onClick={() => dispatch({type: "pay_lifepoints"})}>Confirm Lifepoint Cost</button>
             <input type="range" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
             <button onClick={() => dispatch({type: "reset_lifepoints"})}>Reset Lifepoints</button>
-            <h5>
-                Cards in deck: {duelist.deck.currentSize}, Cards in hand: {duelist.gameState.handSize}, Cards in grave: {duelist.gameState.graveSize}
-            </h5>
+            <h3>
+                {`Cards in deck: ${duelist.deck.currentSize}, Cards in hand: ${duelist.gameState.handSize},  Cards in grave: ${duelist.gameState.graveSize}`}
+            </h3>
             <button onClick={() => dispatch({type: "draw_card"})}>Click me to draw a card!</button>
             <button onClick={() => dispatch({type: "discard_card"})}>Discard a card</button>
             <button onClick={() => dispatch({type: "defeat_check"})}>How is the duelist doing?</button>
             <button onClick={() => dispatch({type: "swap_duelist"})}>Swap Duelists?</button>
             <button onClick={() => console.log(props.duelistName, props.duelistName["firstName"], typeof(props.duelistName))}>What's the current duelist name?</button>
             {duelist.defeated === true ? <p>{duelist.name.first} has lost the duel!</p>: <p>Heart of the cards!</p>}
+            <button onClick={() => setDuelistSwitch(!duelistSwitch)}>Click To Swap The Active Duelist ({duelistSwitch.toString()})</button>
         </div>
     )
 }
