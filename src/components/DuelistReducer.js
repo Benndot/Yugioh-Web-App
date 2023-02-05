@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useState } from "react";
 
 function DuelistReducer(props) {
 
@@ -91,15 +91,16 @@ function DuelistReducer(props) {
     const [duelist, dispatch] = useReducer(reducer, defaultDuelist)
     const [duelist2, dispatch2] = useReducer(reducer, defaultDuelist2)
 
-    useEffect(() => {
+    let determineDispatch = useCallback((actionObject) => {
         if (duelistSwitch === true) {
-            dispatch({type: "swap_duelist"})
+            dispatch(actionObject)
         }
         if (duelistSwitch === false) {
-            dispatch2({type: "swap_duelist"})
+            dispatch2(actionObject)
         }
-        
-    }, [props.duelistName])
+    }, [duelistSwitch])
+
+    useEffect(() => {determineDispatch({type: "swap_duelist"})}, [props.duelistName, determineDispatch])
 
     return (
         <div className="reducer">
@@ -121,17 +122,18 @@ function DuelistReducer(props) {
             
             {duelist.lifePoints <= 0 ? <p style={{color: "red", marginTop: "0vw"}}>life points have fallen below 0!</p> : <p></p>}
             <h3>Lifepoints to sacrifice: {lifepointCost}</h3>
-            <button onClick={() => dispatch({type: "pay_lifepoints"})}>Confirm Lifepoint Cost</button>
+            <button onClick={() => determineDispatch({type: "pay_lifepoints"})}>Confirm Lifepoint Cost</button>
             <input type="range" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
-            <button onClick={() => dispatch({type: "reset_lifepoints"})}>Reset Lifepoints</button>
+            <button onClick={() => determineDispatch({type: "reset_lifepoints"})}>Reset Lifepoints</button>
             <h3>
-                {`Cards in deck: ${duelist.deck.currentSize}, Cards in hand: ${duelist.gameState.handSize},  Cards in grave: ${duelist.gameState.graveSize}`}
+                {`Cards in deck A: ${duelist.deck.currentSize}, Cards in hand A: ${duelist.gameState.handSize},  Cards in grave A: ${duelist.gameState.graveSize}`}
             </h3>
-            <button onClick={() => dispatch({type: "draw_card"})}>Click me to draw a card!</button>
-            <button onClick={() => dispatch({type: "discard_card"})}>Discard a card</button>
-            <button onClick={() => dispatch({type: "defeat_check"})}>How is the duelist doing?</button>
-            <button onClick={() => dispatch({type: "swap_duelist"})}>Swap Duelists?</button>
-            <button onClick={() => console.log(props.duelistName, props.duelistName["firstName"], typeof(props.duelistName))}>What's the current duelist name?</button>
+            <h3>
+                {`Cards in deck B : ${duelist2.deck.currentSize}, Cards in hand B: ${duelist2.gameState.handSize},  Cards in grave B: ${duelist2.gameState.graveSize}`}
+            </h3>
+            <button onClick={() => determineDispatch({type: "draw_card"})}>Click me to draw a card!</button>
+            <button onClick={() => determineDispatch({type: "discard_card"})}>Discard a card</button>
+            <button onClick={() => determineDispatch({type: "defeat_check"})}>How is the duelist doing?</button>
             {duelist.defeated === true ? <p>{duelist.name.first} has lost the duel!</p>: <p>Heart of the cards!</p>}
             <button onClick={() => setDuelistSwitch(!duelistSwitch)}>Click To Swap The Active Duelist ({duelistSwitch.toString()})</button>
         </div>
