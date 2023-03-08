@@ -2,14 +2,15 @@ import { useCallback, useEffect, useReducer, useState } from "react";
 
 function DuelistReducer(props) {
 
-    const [duelistSwitch, setDuelistSwitch] = useState(true)
+    const [playerSwitch, setPlayerSwitch] = useState(true)
     const [lifepointCost, setLifepointCost] = useState(0)
 
     const changeLifePointCost = (ele) => {
         setLifepointCost(ele.target.value)
     }
 
-    // A little yugioh / trading card game themed example for the use of useReducer 
+    // ----------------------------------------------------
+    // Creating the default duelist objects for each player
     const defaultDuelist = {
         name: {
             first: "Seto", 
@@ -33,6 +34,9 @@ function DuelistReducer(props) {
         defeated: false,
         activeEditing: false
     }
+
+    // ----------------------------------------------------
+    // Defining the reducer function to dispatch actions on the duelist objects
 
     const reducer = (duelist, action) => {
 
@@ -88,19 +92,31 @@ function DuelistReducer(props) {
         return duelist
     }
 
+    // ----------------------------------------------------
+    // Defining the actual players in the game and giving them their default data
+
     const [player1, dispatch] = useReducer(reducer, defaultDuelist)
     const [player2, dispatch2] = useReducer(reducer, defaultDuelist2)
 
+    // ----------------------------------------------------
+    // Defining function to determine which player to apply actions to
+
     let determineDispatch = useCallback((actionObject) => {
-        if (duelistSwitch === true) {
+        if (playerSwitch === true) {
             dispatch(actionObject)
         }
-        if (duelistSwitch === false) {
+        if (playerSwitch === false) {
             dispatch2(actionObject)
         }
-    }, [duelistSwitch])
+    }, [playerSwitch])
+
+    // ----------------------------------------------------
+    // Use effect hook
 
     useEffect(() => {determineDispatch({type: "swap_duelist"})}, [props.duelistName, determineDispatch])
+
+    // ----------------------------------------------------
+    // Return statement / components structure
 
     return (
         <div className="reducer">
@@ -135,7 +151,7 @@ function DuelistReducer(props) {
             <button onClick={() => determineDispatch({type: "discard_card"})}>Discard a card</button>
             <button onClick={() => determineDispatch({type: "defeat_check"})}>How is the duelist doing?</button>
             {player1.defeated === true ? <p>{player1.name.first} has lost the duel!</p>: <p>Heart of the cards!</p>}
-            <button onClick={() => setDuelistSwitch(!duelistSwitch)}>Click To Swap The Active Duelist ({duelistSwitch.toString()})</button>
+            <button onClick={() => setPlayerSwitch(!playerSwitch)}>Click To Swap The Active Duelist ({playerSwitch.toString()})</button>
         </div>
     )
 }
