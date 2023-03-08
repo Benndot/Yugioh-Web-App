@@ -2,11 +2,14 @@ import { RadioGroup, RadioOption } from "./RadioOptions";
 
 const duelistNames = [
     {firstName: "Yugi", lastName: "Moto", picture: "Yugi_muto.png"}, 
-    {firstName: "Tea", lastName: "Gardner", picture: "tea-gardner.png"},
+    {firstName: "Seto", lastName: "Kaiba", picture: "seto-kaiba.jpg"},
+    {firstName: "Mai", lastName: "Valentine", picture: "mai-valentine.png"},
     {firstName: "Mokuba", lastName: "Kaiba", picture: "mokuba-kaiba.png"}, 
+    {firstName: "Tea", lastName: "Gardner", picture: "tea-gardner.png"},
     {firstName: "Marik", lastName: "Ishtar", picture: "marik-ishtar.png"},
     {firstName: "Alexis", lastName: "Rhodes", picture: "alexis-rhodes.jpg"},
-    {firstName: "Seto", lastName: "Kaiba", picture: "seto-kaiba.jpg"},
+    {firstName: "Blair", lastName: "Flannigan", picture: "blair-gx.png"},
+    {firstName: "Mokeo", lastName: "Belowski", picture: "mokeo-belowski.png"},
   ]
 
 function DuelistRadioSelection(props) {   
