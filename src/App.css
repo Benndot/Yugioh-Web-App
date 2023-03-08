@@ -6,17 +6,30 @@ body {
 }
 
 button {
-  font-size: 1.5rem;
-  margin-left: 1.5rem;
+  font-size: 1rem;
+  margin-left: 1rem;
   margin-top: 1rem;
+}
+
+button:hover {
+  background-color: aqua;
+}
+
+header {
+  border-bottom: 0.15rem solid white;
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  font-size: 2.75rem;
 }
 
 #box-one {
   background-color: pink;
-  outline: 4px solid yellow;
+  outline: 0.2rem solid yellow;
 }
 
-.portrait-grid {
+.portrait-row {
   display: flex;
   justify-content: space-around;
 }
@@ -24,14 +37,34 @@ button {
 .portrait-box {
   color: white;
   background-color: black;
-  height: 25vw;
-  width: 20vw;
-  border: 0.2vw solid white;
+  height: 40rem;
+  width: 25rem;
+  border: 0.3rem solid white;
 }
 
 .portrait-image {
-  height: 20vw;
-  width: 20vw;
+  height: 25rem;
+  width: 25rem;
+}
+
+.deck-statuses {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lifepoints-tool {
+  background-color: black;
+  border: 0.2rem solid white;
+  display: flex;
+  width: 25rem;
+  margin-left: 40%;
+  padding: 1.6rem;
+}
+
+.lifepoints-tool > button {
+  background-color: red;
+  color: white;
+  height: 4rem;
 }
 
 .RadioOption {
@@ -39,3 +72,15 @@ button {
   margin-right: 1rem;
   display: inline-block;
 }
+
+.RadioGroup {
+  border: 0.4rem solid white;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.radio-submission-buttons {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+

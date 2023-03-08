@@ -10,8 +10,9 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Yugioh State Simulator</h1>
+      
+      <header className='header-section'>
+        <h1 className='header-title'>Yugioh State Simulator</h1>
       </header>
 
       <main>
