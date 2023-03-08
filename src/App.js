@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Yugioh State and Reducer App!</h1>
+        <h1>Yugioh State Simulator</h1>
       </header>
 
       <main>

@@ -34,13 +34,14 @@ function DuelistRadioSelection(props) {
     return (
       <RadioGroup onChange={props.setSelected} selected={props.selected}>
         <h2>Choose The Active Duelist:</h2>
-        {/* Make the sequence of RadioOptions rendered more efficient by mapping/ rendering them automatically based on the DuelistNames list rather than altogether like this */}
-        <RadioOption className="radio-option" value={JSON.stringify(duelistNames[0])}>{`${duelistNames[0].firstName} ${duelistNames[0].lastName}`}</RadioOption>
-        <RadioOption value={JSON.stringify(duelistNames[1])}>{`${duelistNames[1].firstName} ${duelistNames[1].lastName}`}</RadioOption>
-        <RadioOption value={JSON.stringify(duelistNames[2])}>{`${duelistNames[2].firstName} ${duelistNames[2].lastName}`}</RadioOption>
-        <RadioOption value={JSON.stringify(duelistNames[3])}>{`${duelistNames[3].firstName} ${duelistNames[3].lastName}`}</RadioOption>
-        <RadioOption value={JSON.stringify(duelistNames[4])}>{`${duelistNames[4].firstName} ${duelistNames[4].lastName}`}</RadioOption>
-        <RadioOption value={JSON.stringify(duelistNames[5])}>{`${duelistNames[5].firstName} ${duelistNames[5].lastName}`}</RadioOption>
+
+        {duelistNames.map(duelist => (
+          <RadioOption value={JSON.stringify(duelist)}>
+            {`${duelist.firstName} ${duelist.lastName}`}
+          </RadioOption>
+        ))}
+
+
         <button type="submit" disabled={!props.selected} onClick={submitDuelist}>Submit Duelist Name</button>
         <button onClick={viewSelectedClick}>See value of selected</button>
       </RadioGroup>
