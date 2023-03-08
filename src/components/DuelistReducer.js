@@ -129,8 +129,11 @@ function DuelistReducer(props) {
         return (
             <div className="portrait-box">
                 <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt={getPortraitAltText(duelist)} />
-                <h2 className="portrait-text">Player 1: {duelist.name.first + " " + duelist.name.last}</h2>
+                <h2 className="portrait-text">Player: {duelist.name.first + " " + duelist.name.last}</h2>
                 <h2 className="portrait-text">Remaining Life Points: {duelist.lifePoints}</h2>
+                <h3>Cards in deck: {duelist.deck.currentSize}</h3>
+                <h3>Cards in hand: {duelist.gameState.handSize}</h3>
+                <h3>Cards in grave: {duelist.gameState.graveSize}</h3>
             </div>
         )
     }
@@ -145,42 +148,54 @@ function DuelistReducer(props) {
                 {createDuelistPortraitBox(player1)}
                 {createDuelistPortraitBox(player2)}
             </div>
-            
-            <section className="deck-statuses">
-                <h3>
-                    {`Cards in deck A: ${player1.deck.currentSize}, Cards in hand A: ${player1.gameState.handSize},  Cards in grave A: ${player1.gameState.graveSize}`}
-                </h3>
-                <h3>
-                    {`Cards in deck B : ${player2.deck.currentSize}, Cards in hand B: ${player2.gameState.handSize},  Cards in grave B: ${player2.gameState.graveSize}`}
-                </h3>
-            </section>
 
             {player1.lifePoints <= 0 || player2.lifePoints <= 0 ? <p style={{color: "red", marginTop: "0vw"}}>life points have fallen below 0!</p> : <p></p>}
 
+            {/* life points box */}
             <div className="lifepoints-tool">
                 
                 <h4>
                     Lifepoints to sacrifice: {lifepointCost}
                 </h4>
 
-                <input type="range" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
+                <div>
+                    <input type="range" className="lifepoint-slider" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
 
-                <button classname="lifepoint-button" onClick={() => determineDispatch({type: "pay_lifepoints"})}>
-                    Confirm Lifepoint Cost
-                </button>
+                    <button classname="lifepoint-button" onClick={() => determineDispatch({type: "pay_lifepoints"})}>
+                        Confirm Lifepoint Cost
+                    </button>
 
-                <button classname="lifepoint-button" onClick={() => determineDispatch({type: "reset_lifepoints"})}>
-                    Reset Lifepoints
-                </button>
+                    <button classname="lifepoint-button" onClick={() => determineDispatch({type: "reset_lifepoints"})}>
+                        Reset Lifepoints
+                    </button>
+                </div>
+                
 
             </div>
             
-            
-            <button onClick={() => determineDispatch({type: "draw_card"})}>Click to draw a card!</button>
-            <button onClick={() => determineDispatch({type: "discard_card"})}>Discard a card</button>
-            <button onClick={() => determineDispatch({type: "defeat_check"})}>How is the duelist doing?</button>
+            <div className="player-actions">
+                <button onClick={() => determineDispatch({type: "draw_card"})}>
+                    Click to draw a card!
+                </button>
+                
+                <button onClick={() => determineDispatch({type: "discard_card"})}>
+                    Discard a card
+                </button>
+                
+                <button onClick={() => determineDispatch({type: "defeat_check"})}>
+                    Outcome check?
+                </button>
+            </div>  
+
             {player1.defeated === true ? <p>{player1.name.first} has lost the duel!</p>: <p>Heart of the cards!</p>}
-            <button onClick={() => setPlayerSwitch(!playerSwitch)}>Click To Swap The Active Duelist ({playerSwitch.toString()})</button>
+            
+            <h2>
+                Active duelist: {playerSwitch? "Player Left": "Player Right"}
+            </h2>
+
+            <button id="player-switch" onClick={() => setPlayerSwitch(!playerSwitch)}>
+                Swap The Active Duelist
+            </button>
         </div>
     )
 }
