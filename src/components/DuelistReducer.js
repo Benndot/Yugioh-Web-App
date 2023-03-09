@@ -129,11 +129,14 @@ function DuelistReducer(props) {
         return (
             <div className="portrait-box">
                 <img className="portrait-image" src={require(`../images/${duelist.pictureName}`)} alt={getPortraitAltText(duelist)} />
-                <h2 className="portrait-text">Player: {duelist.name.first + " " + duelist.name.last}</h2>
+                <h1 className="portrait-text">{duelist.name.first + " " + duelist.name.last}</h1>
                 <h2 className="portrait-text">Remaining Life Points: {duelist.lifePoints}</h2>
-                <h3>Cards in deck: {duelist.deck.currentSize}</h3>
-                <h3>Cards in hand: {duelist.gameState.handSize}</h3>
-                <h3>Cards in grave: {duelist.gameState.graveSize}</h3>
+                <div className="card-statuses">
+                    <h3 className="card-status">Cards in deck: {duelist.deck.currentSize}</h3>
+                    <h3 className="card-status">Cards in hand: {duelist.gameState.handSize}</h3>
+                    <h3 className="card-status">Cards in grave: {duelist.gameState.graveSize}</h3>
+                </div>
+                
             </div>
         )
     }
@@ -174,15 +177,16 @@ function DuelistReducer(props) {
             </div>
             
             <div className="player-actions">
-                <button onClick={() => determineDispatch({type: "draw_card"})}>
+                
+                <button className="player-action" onClick={() => determineDispatch({type: "draw_card"})}>
                     Click to draw a card!
                 </button>
                 
-                <button onClick={() => determineDispatch({type: "discard_card"})}>
+                <button className="player-action" onClick={() => determineDispatch({type: "discard_card"})}>
                     Discard a card
                 </button>
                 
-                <button onClick={() => determineDispatch({type: "defeat_check"})}>
+                <button className="player-action" onClick={() => determineDispatch({type: "defeat_check"})}>
                     Outcome check?
                 </button>
             </div>  

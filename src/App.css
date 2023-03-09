@@ -28,11 +28,6 @@ header {
   font-size: 2.75rem;
 }
 
-#box-one {
-  background-color: pink;
-  outline: 0.2rem solid yellow;
-}
-
 /* Reducer component */
 
 .portrait-row {
@@ -43,14 +38,22 @@ header {
 .portrait-box {
   color: white;
   background-color: black;
-  height: 42rem;
-  width: 25rem;
+  height: 40rem;
+  width: 22rem;
   border: 0.3rem solid white;
 }
 
+.portrait-box > h2 {
+  font-size: 1.5rem;
+}
+
+.portrait-box > h3 {
+  font-size: 1rem;
+}
+
 .portrait-image {
-  height: 25rem;
-  width: 25rem;
+  height: 22rem;
+  width: 22rem;
 }
 
 .deck-statuses {
@@ -85,6 +88,20 @@ header {
 
 #player-switch:hover {
   background-color: aqua;
+}
+
+.player-action {
+  font-weight: 600;
+  color: green;
+  padding: 0.5rem;
+}
+
+.card-statuses {
+  margin-top: 2.5rem;
+}
+
+.card-status {
+  margin: 0.4rem;
 }
 
 /* Duelist radio options */
