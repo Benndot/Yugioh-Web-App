@@ -19,13 +19,32 @@ button:hover {
 
 /* Page heading */
 
-header {
+.top-bar {
   border-bottom: 0.15rem solid white;
   margin-bottom: 2rem;
+  display: flex;
+}
+
+.top-bar > header {
+  flex: 1;
 }
 
 .header-title {
   font-size: 2.75rem;
+  margin-left: 5.75rem;
+}
+
+.audio-button {
+  background-color: black;
+  border: 0.1rem solid white;
+  height: 3.5rem;
+  margin-top: 2rem;
+  margin-right: 0.5rem;
+}
+
+.audio-icon {
+  height: 3rem;
+
 }
 
 /* Reducer component */
@@ -38,7 +57,7 @@ header {
 .portrait-box {
   color: white;
   background-color: black;
-  height: 40rem;
+  height: 39rem;
   width: 22rem;
   border: 0.3rem solid white;
 }
@@ -102,6 +121,31 @@ header {
 
 .card-status {
   margin: 0.4rem;
+}
+
+.game-surface {
+  height: 37.3rem;
+  width: 45rem;
+  background-color: black;
+  border: 0.2rem solid white;
+}
+
+.trad-row, .link-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+}
+
+.link-row {
+  justify-content: space-evenly;
+  gap: 2.2rem;
+}
+
+.game-zone {
+  height: 6.75rem;
+  width: 4.5rem;
+  border: 0.1rem solid white;
+  background-color: rgb(61, 61, 61);
 }
 
 /* Duelist radio options */

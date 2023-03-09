@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Project Description
 
-This is an app that attempts to make a fun little Yugioh-themed interface that will hopefully simulate some of the game's mechanics. 
+This is a little webdev practice project that attempts to make a fun Yugioh-themed interface that offers interactivity and simulates some of the game's mechanics. The goals of this project are to improve my skills at creating interactivity in webpages, as well as my ability to effectively style a page to capture a desired atmosphere. 
 
 ## Features
 
@@ -11,12 +11,14 @@ This is an app that attempts to make a fun little Yugioh-themed interface that w
 - Manually adjustable lifepoint monitor with warning text and stoppage when lifepoints fall to 0 or lower
 - Ability to draw and discard from a deck, with tracked integers representing the sizes of the deck, hand and graveyard
 - Defeat checks based on lifepoint value and deck-out loss scenarios with a text indicator if the "player" has lost
+- A decent, stylized interface (at least by my own current standards). 
 
 ## Todo
 
-- Create a second duelist reducer state to track two "players" with independent/separate attributes
-- Create a switch on the radio options (and perhaps other things) that lets you choose which duelist to targets
-- Better page styling, especially for the buttons
+- More mechanics and interactivity
+- Test/improve audio toggle
+- Add Yugioh pro API functionality (https://ygoprodeck.com/api-guide/)
+- Create a custom duelist creator page, with form elements
 
 ## Available Scripts
 

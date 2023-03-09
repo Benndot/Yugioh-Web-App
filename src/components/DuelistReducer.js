@@ -149,6 +149,47 @@ function DuelistReducer(props) {
             
             <div className="portrait-row">
                 {createDuelistPortraitBox(player1)}
+
+                <div className="game-surface">
+                    
+                    <div className="trad-row">
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                    </div>
+                    
+                    <div className="trad-row">
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                    </div>
+                    
+                    <div className="link-row">
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                    </div>
+                    
+                    <div className="trad-row">
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                    </div>
+                    
+                    <div className="trad-row">
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                        <div className="game-zone"></div>
+                    </div>
+                </div>
+
                 {createDuelistPortraitBox(player2)}
             </div>
 
@@ -164,11 +205,11 @@ function DuelistReducer(props) {
                 <div>
                     <input type="range" className="lifepoint-slider" value={lifepointCost} min="100" max="4000" step="50" onChange={changeLifePointCost}/>
 
-                    <button classname="lifepoint-button" onClick={() => determineDispatch({type: "pay_lifepoints"})}>
+                    <button className="lifepoint-button" onClick={() => determineDispatch({type: "pay_lifepoints"})}>
                         Confirm Lifepoint Cost
                     </button>
 
-                    <button classname="lifepoint-button" onClick={() => determineDispatch({type: "reset_lifepoints"})}>
+                    <button className="lifepoint-button" onClick={() => determineDispatch({type: "reset_lifepoints"})}>
                         Reset Lifepoints
                     </button>
                 </div>
